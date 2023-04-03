@@ -5,13 +5,13 @@ spring:
     driver-class-name: org.mariadb.jdbc.Driver
     url: jdbc:mariadb://127.0.0.1:3306/gram__dev?useUnicode=true&characterEncoding=utf8&autoReconnect=true&serverTimezone=Asia/Seoul
     username: root
-    password:
+    password: 12345678
   security:
     oauth2:
       client:
         registration:
           kakao:
-            clientId: 0e59d4068f2c83091f3c4511cb557c15
+            clientId: aee41a39a4980428a6eee92b9962b072
 #            클라이언트 아이디 나중에 내걸로 다시 바꿔야함
             scope:
             client-name: Kakao
