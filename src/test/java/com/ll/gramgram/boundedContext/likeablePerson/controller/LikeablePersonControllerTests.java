@@ -149,4 +149,32 @@ public class LikeablePersonControllerTests {
                         """.stripIndent().trim())));
         ;
     }
+    @Test
+    @DisplayName("호감목록")
+    @WithUserDetails("user3")
+    void t006() throws Exception { //여기에서 삭제하는거 있나 없나 확인한번 해볼것
+        // WHEN
+        ResultActions resultActions = mvc
+                .perform(get("/likeablePerson/list"))
+                .andDo(print());
+
+        // THEN
+        resultActions
+                .andExpect(handler().handlerType(LikeablePersonController.class))
+                .andExpect(handler().methodName("showList"))
+                .andExpect(status().is2xxSuccessful())
+                .andExpect(content().string(containsString("""
+                        <span class="toInstaMember_username">insta_user4</span>
+                        """.stripIndent().trim())))
+                .andExpect(content().string(containsString("""
+                        <span class="toInstaMember_attractiveTypeDisplayName">외모</span>
+                        """.stripIndent().trim())))
+                .andExpect(content().string(containsString("""
+                        <span class="toInstaMember_username">insta_user100</span>
+                        """.stripIndent().trim())))
+                .andExpect(content().string(containsString("""
+                        <span class="toInstaMember_attractiveTypeDisplayName">성격</span>
+                        """.stripIndent().trim())));
+        ;
+    }
 }
